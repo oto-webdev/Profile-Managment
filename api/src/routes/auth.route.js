@@ -1,19 +1,28 @@
 import express from "express"
 import { protect } from "../middleware/auth.js"
+import { 
+    deactivate, 
+    deleteAccaunt, 
+    login, 
+    logout,
+    me, 
+    signup,
+    updateProfile, 
+    verifyOtp
+} from "../controllers/auth.controller.js"
 const router = express.Router()
 
-router.get("/me", protect, )
+router.get("/me", protect, me)
 
-router.post("/signup", )
-router.post("/login", )
-router.post("/logout", )
-router.post("/forgot-password", )
-router.post("/reset-password", protect, )
+router.post("/signup", signup)
+router.post("/login", login)
+router.post("/logout", logout)
 
-router.post("/verify-otp", )
+router.post("/verify-otp", verifyOtp)
 
-router.put("/deactivate", protect, )
+router.put("/update-profile", protect, updateProfile)
+router.put("/deactivate", protect, deactivate)
 
-router.delete("/delete-account/:id", protect, )
+router.delete("/delete-account/:id", protect, deleteAccaunt)
 
 export default router;
